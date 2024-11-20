@@ -1,0 +1,39 @@
+.recipe-form {
+  & input {
+    width: 100%;
+    padding: 20px;
+    margin-top: 20px;
+  }
+  & label {
+    margin-top: 20px;
+    display: block;
+  }
+  & option {
+    padding: 10px;
+  }
+
+  & #category {
+    margin-top: 20px;
+    width: 100%;
+    padding: 20px;
+  }
+  & textarea {
+    width: 100%;
+  }
+
+  & button {
+    width: 100%;
+    padding: 20px;
+    background-color: rgb(83, 216, 83);
+    border: none;
+    color: white;
+    border-radius: 10px;
+    margin-top: 20px;
+    font-size: 24px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgb(57, 168, 57);
+    }
+  }
+}

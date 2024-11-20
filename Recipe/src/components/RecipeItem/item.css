@@ -1,0 +1,23 @@
+.recipe-items {
+  & li {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 30px;
+  }
+
+  & p {
+    font-size: 20px;
+    margin-bottom: 10px;
+    & strong {
+      color: green;
+    }
+  }
+
+  & .item-section {
+    width: 100%;
+    height: auto;
+    padding: 40px;
+    box-shadow: 0 0 10px #2222223f;
+    border-radius: 10px;
+  }
+}
