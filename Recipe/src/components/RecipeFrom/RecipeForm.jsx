@@ -1,24 +1,59 @@
+import { useState } from "react";
 import "./form.css";
-const RecipeForm = () => {
+
+const RecipeForm = ({ addRecipe }) => {
+  const [recipe, setRecipe] = useState({
+    name: "",
+    instruction: "",
+    category: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setRecipe({ ...recipe, [name]: value });
+    // console.log(`${name}: ${value}`);
+  };
+
+  const handleSubmit = (e) => {
+    const newRecipe = { name: "", instructions: "", category: "" };
+    e.preventDefault();
+    addRecipe(newRecipe);
+    setRecipe({ name: "", instructions: "", category: "" });
+  };
+
   return (
-    <form className="recipe-form">
+    <form onSubmit={handleSubmit} className="recipe-form">
       <section>
         <label htmlFor="Name">Recipe Name</label>
-        <input type="text" />
+        <input
+          name="name"
+          value={recipe.name}
+          onChange={handleChange}
+          type="text"
+        />
       </section>
       <section>
         <label htmlFor="element">Instructions</label>
-        <textarea rows="10" cols="100%" type="text" />
+        <textarea
+          name="instructions"
+          value={recipe.instruction}
+          onChange={handleChange}
+          type="text"
+        />
       </section>
       <section>
         <label htmlFor="element">Select Caregory</label>
-        <select name="category" id="category">
+        <select
+          value={recipe.category}
+          onChange={handleChange}
+          name="category"
+          id="category">
           <option value="Lunch">Lunch</option>
           <option value="Dinner">Dinner</option>
           <option value="Lunch">Lunch</option>
         </select>
       </section>
-      <button type="button">Add Recipe</button>
+      <button type="submit">Add Recipe</button>
     </form>
   );
 };
