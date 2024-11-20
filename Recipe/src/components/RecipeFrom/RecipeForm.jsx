@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import "./form.css";
 
@@ -15,10 +16,13 @@ const RecipeForm = ({ addRecipe }) => {
   };
 
   const handleSubmit = (e) => {
-    const newRecipe = { name: "", instructions: "", category: "" };
     e.preventDefault();
-    addRecipe(newRecipe);
-    setRecipe({ name: "", instructions: "", category: "" });
+    if (!recipe.name || !recipe.instruction || !recipe.category) {
+      alert("Please fill out all fields!");
+      return;
+    }
+    addRecipe(recipe);
+    setRecipe({ name: "", instruction: "", category: "" });
   };
 
   return (
@@ -33,9 +37,9 @@ const RecipeForm = ({ addRecipe }) => {
         />
       </section>
       <section>
-        <label htmlFor="element">Instructions</label>
+        <label htmlFor="element">instruction</label>
         <textarea
-          name="instructions"
+          name="instruction"
           value={recipe.instruction}
           onChange={handleChange}
           type="text"
@@ -49,8 +53,9 @@ const RecipeForm = ({ addRecipe }) => {
           name="category"
           id="category">
           <option value="Lunch">Lunch</option>
-          <option value="Dinner">Dinner</option>
           <option value="Lunch">Lunch</option>
+          <option value="Dinner">Dinner</option>
+          <option value="Lunch">breakfast</option>
         </select>
       </section>
       <button type="submit">Add Recipe</button>

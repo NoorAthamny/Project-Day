@@ -1,12 +1,15 @@
+/* eslint-disable react/prop-types */
 import "./list.css";
 
 import RecipeItems from "../RecipeItem/RecipeItems";
 
-const RecipeList = () => {
+const RecipeList = ({ recipes }) => {
   return (
     <section className="recipe-list">
       <ul>
-        <RecipeItems />
+        {recipes.map((recipe, index) => (
+          <RecipeItems key={index} recipe={recipe} />
+        ))}
       </ul>
     </section>
   );
